@@ -1,16 +1,8 @@
-
-<article class="prose prose-slate dark:prose-invert max-w-none">
-    <header class="mb-8">
-        <h1 class="text-4xl font-extrabold tracking-tight mb-2">{{POST_TITLE}}</h1>
-        <div class="text-slate-500 dark:text-slate-400">
-            <span>게시일: {{PUBLISHED_DATE}}</span>
-            {{UPDATED_DATE_HTML}}
-        </div>
-    </header>
-    {{PRODUCT_CARDS_HTML}}
-    <div class="post-content">
-        {{POST_CONTENT}}
-    </div>
+<article class="post">
+  <h1 class="post-title">{{POST_TITLE}}</h1>
+  <p class="post-meta">{{DATE}}</p>
+  <div class="post-body">
+    {{POST_HTML}}
+  </div>
 </article>
-{{JSON_LD_BREADCRUMB}}
-{{JSON_LD_BLOGPOSTING}}
+<nav class="nav-home"><a href="/">← 홈으로</a></nav>
