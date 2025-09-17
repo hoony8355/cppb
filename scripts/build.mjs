@@ -225,7 +225,7 @@ async function main() {
 
   const cfg = JSON.parse(await read(path.join(ROOT, "site.config.json")).catch(() => "{}"));
   const siteName = cfg.siteName || "My Blog";
-  const baseUrl = (cfg.baseUrl || "").replace(/\/+$/, "");
+  const baseUrl = (cfg.baseUrl || "").replace(/\/+$/, ""); // e.g. https://username.github.io/repo
   const defaultImage = cfg.defaultImage || "/public/og.jpg";
   const disclosure = cfg.disclosure || "";
   const year = new Date().getFullYear().toString();
@@ -304,11 +304,12 @@ async function main() {
 
     // wrap with layout
     const html = layout
+      .replaceAll("{{BASE}}", baseUrl)
       .replaceAll("{{TITLE}}", escapeHtml(title))
       .replaceAll("{{DESCRIPTION}}", escapeHtml(description || excerptFrom(bodyHtml)))
       .replaceAll("{{KEYWORDS}}", escapeHtml(keywords))
       .replaceAll("{{CANONICAL}}", url)
-      .replaceAll("{{OG_IMAGE}}", cover || defaultImage)
+      .replaceAll("{{OG_IMAGE}}", makeAbsoluteUrl(cover || defaultImage, baseUrl))
       .replace("{{JSON_LD}}", jsonLd + "\n" + jsonLdSite({ siteName, baseUrl }))
       .replaceAll("{{SITENAME}}", escapeHtml(siteName))
       .replaceAll("{{DISCLOSURE}}", escapeHtml(disclosure))
@@ -341,6 +342,7 @@ async function main() {
     .join("\n");
 
   const homeHtml = (await read(path.join(SRC_DIR, "layout.html")))
+    .replaceAll("{{BASE}}", baseUrl)
     .replaceAll("{{TITLE}}", escapeHtml(siteName))
     .replaceAll("{{DESCRIPTION}}", escapeHtml("Latest posts"))
     .replaceAll("{{KEYWORDS}}", "")
@@ -353,6 +355,13 @@ async function main() {
     .replace("{{CONTENT}}", homeList || "<p>글이 없습니다. 첫 글을 업로드하세요.</p>");
 
   await write(path.join(DOCS_DIR, "index.html"), homeHtml);
+
+  function makeAbsoluteUrl(src, base) {
+  if (!src) return base;
+  if (/^https?:\/\//i.test(src)) return src;
+  // "/public/og.jpg" 같은 루트 경로도 baseUrl 붙여 절대 경로화
+  return `${base}${src.startsWith("/") ? "" : "/"}${src}`;
+}
 
   // sitemap.xml (home + posts)
   const sitemapUrls = [
