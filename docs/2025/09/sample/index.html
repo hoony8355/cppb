@@ -1,27 +1,48 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{HEAD_CONTENT}}
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    {{JSON_LD_ORGANIZATION}}
-    {{JSON_LD_WEBSITE}}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>sample</title>
+  <meta name="description" content="--- title: "샘플 포스트: 쿠팡 파트너스 블로그 시작하기" description: "이 샘플 포스트는 쿠팡 파트너스 블로그를 어떻게 작성하는지 보여주기 위한 예시입니다. 프론트매터와 본문 작성법을 확인하세요." date: "2024-07-21" updated: "2024-07-" />
+  <link rel="canonical" href="https://hoony8355.github.io/cppb/2025/09/sample/index.html" />
+  <link rel="icon" href="/public/favicon.ico" />
+  <meta name="robots" content="index,follow" />
+  <!-- OG/Twitter (기본만) -->
+  <meta property="og:title" content="sample" />
+  <meta property="og:description" content="--- title: "샘플 포스트: 쿠팡 파트너스 블로그 시작하기" description: "이 샘플 포스트는 쿠팡 파트너스 블로그를 어떻게 작성하는지 보여주기 위한 예시입니다. 프론트매터와 본문 작성법을 확인하세요." date: "2024-07-21" updated: "2024-07-" />
+  <meta property="og:url" content="https://hoony8355.github.io/cppb/2025/09/sample/index.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="/src/styles.css" />
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
-    <div class="max-w-3xl mx-auto px-4 py-8">
-        <header class="mb-8">
-            <a href="/" class="text-3xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{{SITE_NAME}}</a>
-        </header>
-        <main>
-            {{BODY_CONTENT}}
-        </main>
-        <footer class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700 text-center text-sm text-slate-500 dark:text-slate-400">
-            <p>{{DISCLOSURE_TEXT}}</p>
-            <p class="mt-2">&copy; ${new Date().getFullYear()} {{SITE_NAME}}. All rights reserved.</p>
-        </footer>
+<body>
+  <header class="wrap header">
+    <a class="brand" href="/">나의 파트너스 블로그</a>
+    <p class="disclosure">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+  </header>
+
+  <main class="wrap">
+    
+<article class="prose prose-slate dark:prose-invert max-w-none">
+    <header class="mb-8">
+        <h1 class="text-4xl font-extrabold tracking-tight mb-2">sample</h1>
+        <div class="text-slate-500 dark:text-slate-400">
+            <span>게시일: {{PUBLISHED_DATE}}</span>
+            {{UPDATED_DATE_HTML}}
+        </div>
+    </header>
+    {{PRODUCT_CARDS_HTML}}
+    <div class="post-content">
+        {{POST_CONTENT}}
     </div>
+</article>
+{{JSON_LD_BREADCRUMB}}
+{{JSON_LD_BLOGPOSTING}}
+
+  </main>
+
+  <footer class="wrap footer">
+    <small>© 2025 나의 파트너스 블로그</small>
+  </footer>
 </body>
 </html>
