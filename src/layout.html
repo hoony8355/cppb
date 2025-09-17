@@ -1,27 +1,32 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{HEAD_CONTENT}}
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    {{JSON_LD_ORGANIZATION}}
-    {{JSON_LD_WEBSITE}}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}" />
+  <link rel="canonical" href="{{CANONICAL}}" />
+  <link rel="icon" href="/public/favicon.ico" />
+  <meta name="robots" content="index,follow" />
+  <!-- OG/Twitter (기본만) -->
+  <meta property="og:title" content="{{TITLE}}" />
+  <meta property="og:description" content="{{DESCRIPTION}}" />
+  <meta property="og:url" content="{{CANONICAL}}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="/src/styles.css" />
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
-    <div class="max-w-3xl mx-auto px-4 py-8">
-        <header class="mb-8">
-            <a href="/" class="text-3xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">{{SITE_NAME}}</a>
-        </header>
-        <main>
-            {{BODY_CONTENT}}
-        </main>
-        <footer class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700 text-center text-sm text-slate-500 dark:text-slate-400">
-            <p>{{DISCLOSURE_TEXT}}</p>
-            <p class="mt-2">&copy; ${new Date().getFullYear()} {{SITE_NAME}}. All rights reserved.</p>
-        </footer>
-    </div>
+<body>
+  <header class="wrap header">
+    <a class="brand" href="/">{{SITENAME}}</a>
+    <p class="disclosure">{{DISCLOSURE}}</p>
+  </header>
+
+  <main class="wrap">
+    {{CONTENT}}
+  </main>
+
+  <footer class="wrap footer">
+    <small>© {{YEAR}} {{SITENAME}}</small>
+  </footer>
 </body>
 </html>
