@@ -1,0 +1,18 @@
+
+{
+  "name": "static-blog-generator-for-coupang",
+  "version": "1.0.0",
+  "description": "A simple static blog generator for GitHub Pages, tailored for Coupang Partners.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "jsdom": "^24.0.0",
+    "marked": "^12.0.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

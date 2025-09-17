@@ -1,0 +1,5 @@
+{
+  "name": "GitHub Pages 정적 블로그 생성기 (쿠팡 파트너스용)",
+  "description": "마크다운 파일만 업로드하면 GitHub Actions가 자동으로 빌드하고 배포하는 쿠팡 파트너스 전용 초간단 정적 블로그입니다.",
+  "requestFramePermissions": []
+}
