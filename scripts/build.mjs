@@ -359,4 +359,27 @@ async function main() {
     `${baseUrl}/`,
     ...posts.map((p) => p.url)
   ]
-    .map((loc) => `<url><loc>${loc}</loc><lastmod>
+    .map((loc) => `<url><loc>${loc}</loc><lastmod>${todayISO()}</lastmod></url>`)
+    .join("");
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls}
+</urlset>`;
+
+  await fs.writeFile(path.join(ROOT, "sitemap.xml"), sitemap, "utf8");
+
+  // robots.txt (optional but useful)
+  const robots = `User-agent: *
+Allow: /
+Sitemap: ${baseUrl}/sitemap.xml
+`;
+  await fs.writeFile(path.join(ROOT, "robots.txt"), robots, "utf8");
+
+  console.log("Build complete. Files written to /docs, plus sitemap.xml and robots.txt at repo root.");
+}
+
+await main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
